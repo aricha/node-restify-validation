@@ -28,7 +28,6 @@ describe('Plugin test', function () {
 
         var handleErrors = sinon.stub(index.error, 'handle', function (errors, req, res, options, next) {
             errors.should.equal(error);
-            req.should.equal(req_validation_empty);
             res.should.equal(res_empty);
             processValidation.called.should.be.ok;
             handleErrors.called.should.be.ok;
@@ -45,7 +44,6 @@ describe('Plugin test', function () {
 
     it('Call next on successful validation', function (done) {
         var processValidation = sinon.stub(index.validation, 'process', function (validationModel, req, options) {
-            req.should.equal(req_validation_empty);
             return [];
         });
 
